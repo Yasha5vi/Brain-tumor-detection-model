@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Brain Tumor Detection</title>
+        <link rel="stylesheet" href="../static/style.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1 class="heading">Brain tumor <span class="de hov">Detection </span> Model</h1>
+            <hr/>
+        </header>
+        <div class="main">
+            <div class="left card">
+                <div class="half">
+                    <img class="hov" src="../static/wp2450788-neuro-wallpapers.jpg" alt="image">
+                </div>
+                <div class="half">
+                    <h2>Insightful Imaging Tech</h2>
+                </div>
+            </div>
+            <div class="right card">
+                <p>An AI model that 
+                    detects the presence of tumors in 
+                    medical images, providing crucial 
+                    assistance in early diagnosis 
+                    for improved patient outcomes.
+                </p>
+                <h3>Please select your MRI image :</h3>
+                <label for="imageInput" class="input-button hov">Browse</label>
+                <input type="file" id="imageInput" accept="image/*">
+                <p id="statusMessage" style="color: #3498db;"></p>
+                <button onclick="processImage()" class="hov">Process</button>
+                <!--<img id="resultImage" alt="Result Image" style="display:none;">-->
+            </div>
+        </div>
+        <footer>
+            <p>&copy; Yashasvi Chandra</p>
+        </footer>
+        <script src="./static/script.js"></script>
+    </body>
+</html>
+
+

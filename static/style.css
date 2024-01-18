@@ -1,0 +1,118 @@
+body{
+    margin: 10px 50px 0px 0px;
+    font-family: "Poppins", sans-serif;
+    background-color: #faf9f6;
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh;
+}
+.heading{
+    font-size: 3rem;
+    margin-left:13%;
+}
+h2{
+    font-size: 2rem;
+    text-align:center;
+    padding: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+h3{
+    margin-top: 70px;
+}
+.de{
+    color: blueviolet;
+    transition: transform 0.2s;
+}
+.main{
+    flex:1;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    margin-top: 30px;
+}
+.card{
+    max-width: 500px;
+    padding: 10px;
+    text-align: justify;
+    max-height: 70%;
+    max-width: 35%;
+}
+button{
+    background-color: blueviolet;
+    color: white;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 10px;
+    padding:15px;
+    transition: transform 0.2s;
+}
+.hov:hover{
+    transform: scale(1.1);
+}
+.half{
+    height: 50%;
+}
+.left{
+    background-color: #c5c7c438;
+    border-radius: 20px;
+    padding:0;
+    margin-left: 10%;
+    border: 1px solid  #bec9e3;
+}
+.right{
+    padding-left: 8%;
+}
+.right>p{
+    margin-top: 0;
+}
+img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius:20px;
+    box-shadow: 0px -1px 10px;
+    transition: transform 0.2s;
+}
+footer{
+    text-align:right;
+}
+.hov:hover{
+    transform: scale(1.1);
+}
+input[type="file"]{
+    display:none;
+}
+.input-button{
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: blueviolet;
+    color: #fff;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+@media (max-width:680px){
+    .main{
+        flex-direction: column;
+    }
+    .card{
+        max-width: 100%;
+    }
+    .left{
+        margin-bottom: 50px;
+    }
+    .right{
+        padding: 0;
+        margin-left: 40px;
+        margin-bottom: 100px;
+    }
+    .heading{
+        text-align: center;
+    }
+    hr{
+        margin-left: 13%;
+    }
+}
