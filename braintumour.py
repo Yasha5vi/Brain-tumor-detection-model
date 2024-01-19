@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder 
 import tensorflow.compat.v2 as tf
 
-# one hot encoding as computer is only able to understand 0 and 1
+# one hot encoding 
 encoder = OneHotEncoder()
 encoder.fit([[0], [1]]) 
 
