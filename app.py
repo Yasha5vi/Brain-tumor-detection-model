@@ -12,7 +12,7 @@ app = Flask(__name__)
 # Set the working directory to the directory containing this script
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-# Load the entire model
+# Loading model
 loaded_model = load_model('brain_tumor_detection_model.h5')
 
 def names(number):
@@ -25,18 +25,16 @@ def process_image(file):
     # Extract relevant data from FileStorage object
     file_content = file.read()
 
-    # Convert file content to a PIL Image
+    # Converting file content to a PIL Image
     image = Image.open(io.BytesIO(file_content))
-
-    # Resize and preprocess the image
+
     x = np.array(image.resize((128, 128)))
     x = x.reshape(1, 128, 128, 3)
 
-    # Make the prediction
+    # making prediction
     res = loaded_model.predict_on_batch(x)
     classification = np.argmax(res)
 
-    # Display the image with the result text
     plt.imshow(image)
     plt.text(
         0, -10, f"Prediction: {names(classification)}",
