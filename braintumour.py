@@ -18,7 +18,7 @@ encoder.fit([[0], [1]])
 # 0 for Tumor
 # 1 for Normal
 
-# This cell updates result list for images with tumor
+# updating result list for images with tumor
 
 data = []       # for storing images data into numpy array form 
 paths = []      # stores the path of all the images
@@ -37,7 +37,7 @@ for path in paths:
         data.append(np.array(img))
         result.append(encoder.transform([[0]]).toarray())
 
-# This cell updates result list for images without tumor
+# updating result list for images without tumor
 
 paths = []
 for r, d, f in os.walk(r"C:\Users\yasha\OneDrive\Desktop\Projects\Dataset\no"):
@@ -59,7 +59,7 @@ data.shape
 result = np.array(result)
 result = result.reshape(-1,2)
 
-# Splitting the data into training and testing set
+# splitting data into training and testing set
 
 x_train,x_test,y_train,y_test = train_test_split(data, result, test_size=0.2, shuffle=True, random_state=0)
 
@@ -93,7 +93,7 @@ y_train.shape
 #fitting the data into the model 
 history = model.fit(x_train, y_train, epochs = 30, batch_size = 30, verbose = 1,validation_data = (x_test, y_test))
 
-# this will print the final accuracy of the model - Source Chat Gpt
+# for printing accuracy 
 evaluation_result = model.evaluate(x_test, y_test, verbose=0)
 test_loss = evaluation_result[0]
 test_accuracy = evaluation_result[1]
@@ -116,11 +116,11 @@ def names(number):
 
 model.save('brain_tumor_detection_model.h5')
 
-# Save model architecture to JSON file
+# Saving model architecture to JSON file
 model_json = model.to_json()
 with open('brain_tumor_detection_model.json', 'w') as json_file:
     json_file.write(model_json)
 
-# Save model weights to HDF5 file
+# Saving model weights to HDF5 file
 model.save_weights('brain_tumor_detection_model_weights.h5')
 
