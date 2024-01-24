@@ -9,16 +9,14 @@ import matplotlib.pyplot as plt
 plt.style.use('dark_background')
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder 
-import tensorflow.compat.v2 as tf
 
-# one hot encoding 
 encoder = OneHotEncoder()
 encoder.fit([[0], [1]]) 
 
 # 0 for Tumor
 # 1 for Normal
 
-# updating result list for images with tumor
+# with tumor
 
 data = []       # for storing images data into numpy array form 
 paths = []      # stores the path of all the images
@@ -37,7 +35,7 @@ for path in paths:
         data.append(np.array(img))
         result.append(encoder.transform([[0]]).toarray())
 
-# updating result list for images without tumor
+# without tumor
 
 paths = []
 for r, d, f in os.walk(r"C:\Users\yasha\OneDrive\Desktop\Projects\Dataset\no"):
@@ -54,12 +52,8 @@ for path in paths:
         result.append(encoder.transform([[1]]).toarray())
 
 data = np.array(data)
-data.shape
-
 result = np.array(result)
 result = result.reshape(-1,2)
-
-# splitting data into training and testing set
 
 x_train,x_test,y_train,y_test = train_test_split(data, result, test_size=0.2, shuffle=True, random_state=0)
 
@@ -67,7 +61,6 @@ model = Sequential()
 
 model.add(Conv2D(32, kernel_size=(2, 2), input_shape=(128, 128, 3), padding = 'Same'))
 model.add(Conv2D(32, kernel_size=(2, 2),  activation ='relu', padding = 'Same'))
-
 
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2, 2)))
@@ -80,7 +73,7 @@ model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2), strides=(2,2)))
 model.add(Dropout(0.25))
 
-model.add(Flatten())        # images ko 1D array me convert krne ke liye
+model.add(Flatten())        # 1D array me convert
 
 model.add(Dense(512, activation='relu'))
 model.add(Dropout(0.5))
@@ -93,13 +86,11 @@ y_train.shape
 #fitting the data into the model 
 history = model.fit(x_train, y_train, epochs = 30, batch_size = 30, verbose = 1,validation_data = (x_test, y_test))
 
-# for printing accuracy 
 evaluation_result = model.evaluate(x_test, y_test, verbose=0)
 test_loss = evaluation_result[0]
 test_accuracy = evaluation_result[1]
 print(f'Test Loss: {test_loss}, Test Accuracy: {test_accuracy}')
 
-#Plotting the curve of loss vs epoch
 plt.plot(history.history['loss'])
 plt.title('Model Loss')
 plt.ylabel('Loss')
@@ -116,11 +107,11 @@ def names(number):
 
 model.save('brain_tumor_detection_model.h5')
 
-# Saving model architecture to JSON file
+# Save model architecture to JSON file
 model_json = model.to_json()
 with open('brain_tumor_detection_model.json', 'w') as json_file:
     json_file.write(model_json)
 
-# Saving model weights to HDF5 file
+# Save model weights to HDF5 file
 model.save_weights('brain_tumor_detection_model_weights.h5')
 
