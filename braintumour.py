@@ -22,7 +22,7 @@ data = []       # for storing images data into numpy array form
 paths = []      # stores the path of all the images
 result = []     # stores one hot encoded data
 
-for r, d, f in os.walk(r'C:\Users\yasha\OneDrive\Desktop\Projects\Dataset\yes'):
+for r, d, f in os.walk(r'path to MRI images having tumor'):
     for file in f:
         if '.jpg' in file:
             paths.append(os.path.join(r, file))
@@ -38,7 +38,7 @@ for path in paths:
 # without tumor
 
 paths = []
-for r, d, f in os.walk(r"C:\Users\yasha\OneDrive\Desktop\Projects\Dataset\no"):
+for r, d, f in os.walk(r'path to tumor free MRI images'):
     for file in f:
         if '.jpg' in file:
             paths.append(os.path.join(r, file))
